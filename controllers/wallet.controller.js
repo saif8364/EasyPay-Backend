@@ -177,7 +177,7 @@ export const changeUsername = async (req, res) => {
     if(!new_username){
         return errorResponse(res, "New username is required", 401);
     }
-    let data=await sql `UPDATE wallets SET wallet_name=${new_username} WHERE wallet_id=${req.user.user_id}`;
+    let data=await sql `UPDATE wallets SET wallet_name=${new_username} WHERE wallet_id=${req.user.user_id} RETURNING wallet_name`;
     successResponse(res, data);
 
    } catch (error) {
