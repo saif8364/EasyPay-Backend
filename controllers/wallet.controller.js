@@ -17,7 +17,7 @@ export const createWallet = async (req, res) => {
     errorResponse(res,'All fields required ',401)
    }
 
-    let user=await sql `Select wallet_id from wallets where wallet_id=${req.user.user_id}`
+    let user=await sql `Select wallet_id from wallets where wallet_id=${req.user.user_id} RETURNING wallet_name`
     console.log(user);
    if(user.length!=0){
    return errorResponse(res,'Already have a wallet ',401)
