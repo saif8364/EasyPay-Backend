@@ -178,6 +178,7 @@ export const changeUsername = async (req, res) => {
         return errorResponse(res, "New username is required", 401);
     }
     let data=await sql `UPDATE wallets SET wallet_name=${new_username} WHERE wallet_id=${req.user.user_id} RETURNING wallet_name`;
+      await redisClient.del(`wallet:${req.user.user_id}`);
     successResponse(res, data);
 
    } catch (error) {
