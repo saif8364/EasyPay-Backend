@@ -17,11 +17,11 @@ const router = express.Router();
 router.get('/getwallet', getWallet);
 router.get('/getwalletwithoutcached', getWalletwithoutCached);
 router.get('/getbalance', getWalletBalance);
-router.get('/getbyphone', getWalletbyNumber);
 router.get('/verifyPin',verifyPin);
 
 // POST routes
 router.post('/createwallet', createWallet);
+router.post('/getbyphone', getWalletbyNumber);
 router.post('/changepin', changepin_limiter, changePin);
 router.post('/changeusername', changeusername_limiter, changeUsername);
 
